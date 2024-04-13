@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#addRecords">
+                        <i class="fas fa-plus"></i>
+                        Add Records
+                    </a>
+                </li>
+                <li>
+                    <a href="#records">
+                        <i class="fas fa-file-medical"></i>
+                        Records
+                    </a>
+                </li>
+                <li>
+                    <a href="#addSchedule">
+                        <i class="fas fa-calendar-plus"></i>
+                        Add Doctor Schedule
+                    </a>
+                </li>
+                <li>
+                    <a href="#manageSchedule">
+                        <i class="fas fa-calendar-alt"></i>
+                        Manage Doctor Schedule
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+            <!-- Main Content Goes Here -->
+            <div class="container" id="dashboard">
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">
+                        Total Appointments
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">120</h5>
+                        <p class="card-text">Total number of appointments made.</p>
+                    </div>
+                </div>
+                <!-- Old data table here -->
+                <div id="dashboardTable" class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>2024-04-13</td>
+                            </tr>
+                            <!-- Add more rows for additional appointments -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="container" id="addRecords">
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        Add Patient Record
+                    </div>
+                    <div class="card-body">
+                        <form id="addRecordForm">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="number" class="form-control" id="age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="disease">Disease:</label>
+                                <input type="text" class="form-control" id="disease" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="medicine">Medicine:</label>
+                                <input type="text" class="form-control" id="medicine" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Record</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="records">
+                <div class="card mb-3">
+                    <div class="card-header bg-info text-white">
+                        Patient Records
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Patient Details</h5>
+                        <p class="card-text">Here are the patient records:</p>
+                    </div>
+                </div>
+                <!-- Records table here -->
+                <div id="recordsTable" class="table-responsive">
+                    <!-- Records table will be dynamically generated here -->
+                </div>
+            </div>
+            <div class="container" id="addSchedule">
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        Add Doctor Schedule
+                    </div>
+                    <div class="card-body">
+                        <form id="addScheduleForm">
+                            <div class="form-group">
+                                <label for="doctorName">Doctor Name:</label>
+                                <select class="form-control" id="doctorName" required>
+                                    <option value="Doc 1">Doc 1</option>
+                                    <option value="Doc 2">Doc 2</option>
+                                    <option value="Doc 3">Doc 3</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="speciality">Speciality:</label>
+                                <input type="text" class="form-control" id="speciality" value="MBBS" required readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="timing">Timing:</label>
+                                <input type="text" class="form-control" id="timing" value="12pm - 5pm" required readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="day">Day:</label>
+                                <select class="form-control" id="day" required>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Schedule</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="manageSchedule">
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        Manage Doctor Schedule
+                    </div>
+                    <div class="card-body">
+                        <!-- Schedule management interface here -->
+                        <ul id="scheduleList" class="list-group">
+                            <!-- Schedule entries will be dynamically generated here -->
+                            <li class="list-group-item">
+                                <span>Doc 1 (MBBS) - 12pm - 5pm - Monday</span>
+                                <button class="btn btn-sm btn-danger float-right delete-schedule">Delete</button>
+                            </li>
+                            <li class="list-group-item">
+                                <span>Doc 2 (MBBS) - 12pm - 5pm - Monday</span>
+                                <button class="btn btn-sm btn-danger float-right delete-schedule">Delete</button>
+                            </li>
+                            <li class="list-group-item">
+                                <span>Doc 3 (MBBS) - 12pm - 5pm - Monday</span>
+                                <button class="btn btn-sm btn-danger float-right delete-schedule">Delete</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+    <script src="schedule.js"></script>
+</body>
+</html>
